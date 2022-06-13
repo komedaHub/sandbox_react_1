@@ -1,20 +1,27 @@
 import ReactDOM from "react-dom";
 import { Fragment } from "react";
+import { useState } from "react";
+import { useEffect } from "react";
+import { ColoredMessage } from "./components/ColoredMessage";
 
 export const App = () => {
+  // Stateの定義
+  const [num, setNum] = useState(0);
   const onClickButton = () => {
-    alert("love");
+    setNum(num + 1);
   };
-  const contentStyle = {
-    color: "blue",
-    fontSize: "20px"
-  };
+
+  useEffect(() => {
+    alert();
+  }, [num]);
   return (
     <Fragment>
       {console.log("test")}
       <h1 style={{ color: "red" }}>こんにちは！</h1>
-      <p style={contentStyle}>お元気ですか？</p>
+      <ColoredMessage color="blue">お元気ですか？</ColoredMessage>
+      <ColoredMessage color="pink">元気です!</ColoredMessage>
       <button onClick={onClickButton}>ボタン</button>
+      <p>{num}</p>
     </Fragment>
   );
 };
